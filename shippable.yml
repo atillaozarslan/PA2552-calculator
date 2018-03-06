@@ -11,5 +11,3 @@ build:
     - mkdir -p shippable/codecoverage
     - mvn install -DskipTests
     - mvn clean cobertura:cobertura
-    - cp -r target shippable/codecoverage
-    - cp -r target shippable/testresults
