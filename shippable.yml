@@ -2,15 +2,14 @@ language: java
 
 jdk:
   - oraclejdk8
-  
+
 build:
+  cache: true
   ci:
     # Create folders for test and code coverage
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
-    - mvn install --fail-never
+    - mvn install -DskipTests
+    - mvn clean cobertura:cobertura
     - cp -r target shippable/codecoverage
-
-after_success:
-  - mvn clean cobertura:cobertura
-  - cp -r target shippable/testresults
+    - cp -r target shippable/testresults
