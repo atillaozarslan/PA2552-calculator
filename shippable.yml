@@ -10,3 +10,15 @@ build:
     - mkdir -p shippable/codecoverage
     - mvn install -DskipTests
     - mvn clean cobertura:cobertura
+
+integrations:
+  notifications:
+    - integrationName: slack-integration
+      type: slack
+      recipients: "#shippable_ci"
+    - integrationName: email
+      type: email
+      on_success: never
+      on_failure: never
+      on_cancel: never
+      on_pull_request: never
